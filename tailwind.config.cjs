@@ -88,9 +88,9 @@ module.exports = {
       animation: {
         "spin-slow": "spin 30s linear infinite",
       },
-      backgroundImage: (theme) => ({
-        screens: "url('/path-to/image.png')",
-      }),
+      // backgroundImage: (theme) => ({
+      //   screens: "url('/path-to/image.png')",
+      // }),
 
       colors: {
         charcoal: {
@@ -136,9 +136,13 @@ module.exports = {
         cokiep: {
           500: "#d3a8cd",
         },
+        cokieb: {
+          500: "#9ED0E6",
+          700: "#82A7A6",
+        },
       },
       fontFamily: {
-        sans: ["Itim", "Inter", ...defaultTheme.fontFamily.sans],
+        sans: ["Borel", "Inter", ...defaultTheme.fontFamily.sans],
       },
     },
   },
