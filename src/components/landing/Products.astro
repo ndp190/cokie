@@ -1,196 +1,119 @@
+---
+const products = [
+  {
+    href: "https://vn.shp.ee/ZFQLEko",
+    src: "https://r2.nguyentalk.com/cokie/con-ca-banh.webp",
+    title: "Áo croptop thun gân viền màu",
+    description: "Con cá bánh",
+    originalPrice: 175000,
+    price: 157500 
+  },
+  {
+    href: "https://vn.shp.ee/mbvJ65x",
+    src: "https://r2.nguyentalk.com/cokie/quan-gia-bo.webp",
+    title: "Quần short nỉ thun năng động",
+    description: "Quần giả bộ",
+    originalPrice: 210000,
+    price: 189000
+  },
+  {
+    href: "https://vn.shp.ee/mn2F4kS",
+    src: "https://r2.nguyentalk.com/cokie/ao-giong-corset.webp",
+    title: "",
+    description: "Áo giống corset",
+    originalPrice: 380000,
+    price: 380000
+  },
+  {
+    href: "https://vn.shp.ee/cYBHjRy",
+    src: "https://r2.nguyentalk.com/cokie/cai-dam-ten-dam.webp",
+    title: "Đầm trắng hoạ tiết thêu",
+    description: "Cái đầm tên đầm",
+    originalPrice: 450000,
+    price: 450000
+  },
+  {
+    href: "https://vn.shp.ee/wutqRd2",
+    src: "https://r2.nguyentalk.com/cokie/set-do-xinh.webp",
+    title: "Set đồ mùa hè ren thun siêu mát lưng",
+    description: "Set đồ xinh",
+    originalPrice: 490000,
+    price: 490000
+  },
+  {
+    href: "https://vn.shp.ee/xU7LFf1",
+    src: "https://r2.nguyentalk.com/cokie/set-do-ngu.webp",
+    title: "",
+    description: "Set đồ đi ngủ mặc ra đường",
+    originalPrice: 290000,
+    price: 150000
+  },
+  {
+    href: "https://vn.shp.ee/EV8xNws",
+    src: "https://r2.nguyentalk.com/cokie/ao-cheo-vai.webp",
+    title: "Áo sát nách lệch vai thun gân viền màu",
+    description: "Áo chẹo vai",
+    originalPrice: 155000,
+    price: 139500 
+  },
+  {
+    href: "https://vn.shp.ee/a1aREbw",
+    src: "https://r2.nguyentalk.com/cokie/ao-somi-bao-gao.webp",
+    title: "",
+    description: "Áo sơmi bao gạo",
+    originalPrice: 320000,
+    price: 166000
+  },
+];
+
+function formatCurrency(value) {
+  return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+}
+
+function calculateDiscountPercentage(originalPrice, price) {
+  return Math.round(((originalPrice - price) / originalPrice) * 100);
+}
+---
 <main aria-labelledby="header" class="relative overflow-hidden">
   <h2 class="sr-only" id="header">Header</h2>
   <div class="relative mx-auto px-8 max-w-7xl py-12 lg:px-36 md:px-12">
-    <div
-      class="grid grid-cols-1 gap-6 lg:gap-y-12 md:grid-cols-2 lg:grid-cols-2"
-    >
-      <a href="https://vn.shp.ee/ZFQLEko" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/con-ca-banh.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-cokiey-500">
-                Áo croptop thun gân viền màu
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Con cá bánh
-              </p>
+    <div class="grid grid-cols-1 gap-6 lg:gap-y-12 md:grid-cols-2 lg:grid-cols-2">
+      {products.map(product => (
+        <a href={product.href} target="_blank">
+          <figure>
+            <img
+              class="w-full rounded-3xl shadow-2xl"
+              src={product.src}
+              alt=""
+              width="1310"
+              height="873"
+            />
+            <div class="mt-4 flex justify-between px-6">
+              <div>
+                <h3 class="text-sm text-cokiey-500">{product.title}</h3>
+                <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
+                  {product.description}
+                </p>
+              </div>
+              <div class="flex flex-col items-end">
+                {product.originalPrice !== product.price && (
+                  <p class="text-sm text-gray-500 line-through">
+                    {formatCurrency(product.originalPrice)}
+                  </p>
+                )}
+                <p class="text-lg font-bold text-cokieb-500">
+                  {formatCurrency(product.price)}
+                </p>
+                {product.originalPrice !== product.price && (
+                  <span class="inline-flex items-center pt-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-negroni-100 text-negroni-800">
+                    -{calculateDiscountPercentage(product.originalPrice, product.price)}%
+                  </span>
+                )}
+              </div>
             </div>
-            <p class="text-base text-cokieb-500">175.000₫</p>
-          </div>
-        </figure>
-      </a>
-      <a href="https://vn.shp.ee/wutqRd2" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/set-do-xinh.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-negroni-500">
-                <h3 class="text-sm text-cokiey-500">
-                  Set đồ mùa hè ren thun siêu mát lưng
-                </h3>
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Set đồ xinh
-              </p>
-            </div>
-            <p class="text-base text-cokieb-500">490.000₫</p>
-          </div>
-        </figure>
-      </a>
-      <a href="https://vn.shp.ee/mbvJ65x" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/quan-gia-bo.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-negroni-500">
-                <h3 class="text-sm text-cokiey-500">
-                  Quần short nỉ thun năng động
-                </h3>
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Quần giả bộ
-              </p>
-            </div>
-            <p class="text-base text-cokieb-500">189.000₫</p>
-          </div>
-        </figure>
-      </a>
-      <a href="https://vn.shp.ee/a1aREbw" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/ao-somi-bao-gao.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-negroni-500">
-                <h3 class="text-sm text-cokiey-500">
-                </h3>
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Áo sơmi bao gạo
-              </p>
-            </div>
-            <p class="text-base text-cokieb-500">320.000₫</p>
-          </div>
-        </figure>
-      </a>
-      <a href="https://vn.shp.ee/xU7LFf1" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/set-do-ngu.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-negroni-500">
-                <h3 class="text-sm text-cokiey-500">
-                </h3>
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Set đồ đi ngủ mặc ra đường
-              </p>
-            </div>
-            <p class="text-base text-cokieb-500">290.000₫</p>
-          </div>
-        </figure>
-      </a>
-      <a href="https://vn.shp.ee/EV8xNws" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/ao-cheo-vai.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-negroni-500">
-                <h3 class="text-sm text-cokiey-500">
-                  Áo sát nách lệch vai thun gân viền màu
-                </h3>
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Áo chẹo vai
-              </p>
-            </div>
-            <p class="text-base text-cokieb-500">155.000₫</p>
-          </div>
-        </figure>
-      </a>
-      <a href="https://vn.shp.ee/mn2F4kS" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/ao-giong-corset.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-negroni-500">
-                <h3 class="text-sm text-cokiey-500">
-                </h3>
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Áo giống corset
-              </p>
-            </div>
-            <p class="text-base text-cokieb-500">380.000₫</p>
-          </div>
-        </figure>
-      </a>
-      <a href="https://vn.shp.ee/cYBHjRy" target="_blank">
-        <figure>
-          <img
-            class="w-full rounded-3xl shadow-2xl"
-            src="https://r2.nguyentalk.com/cokie/cai-dam-ten-dam.webp"
-            alt=""
-            width="1310"
-            height="873"
-          />
-          <div class="mt-4 flex justify-between px-6">
-            <div>
-              <h3 class="text-sm text-negroni-500">
-                <h3 class="text-sm text-cokiey-500">
-                  Đầm trắng hoạ tiết thêu
-                </h3>
-              </h3>
-              <p class="mt-1 text-lg font-bold leading-6 text-negroni-200">
-                Cái đầm tên đầm
-              </p>
-            </div>
-            <p class="text-base text-cokieb-500">450.000₫</p>
-          </div>
-        </figure>
-      </a>
+          </figure>
+        </a>
+      ))}
     </div>
   </div>
 </main>
