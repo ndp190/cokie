@@ -84,9 +84,11 @@ function calculateDiscountPercentage(originalPrice, price) {
             <img
               class="w-full rounded-3xl shadow-2xl"
               src={product.src}
-              alt=""
+              alt={product.description}
               width="1310"
               height="873"
+              loading="lazy"
+              decoding="async"
             />
             <div class="mt-4 flex justify-between px-6">
               <div>
