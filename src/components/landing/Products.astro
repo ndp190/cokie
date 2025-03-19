@@ -1,68 +1,68 @@
 ---
 const products = [
   {
-    href: "https://vn.shp.ee/ZFQLEko",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/con-ca-banh.webp",
     title: "Áo croptop thun gân viền màu",
     description: "Con cá bánh",
-    originalPrice: 175000,
-    price: 157500 
+    // originalPrice: 175000,
+    // price: 157500 
   },
   {
-    href: "https://vn.shp.ee/mbvJ65x",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/quan-gia-bo.webp",
     title: "Quần short nỉ thun năng động",
     description: "Quần giả bộ",
-    originalPrice: 210000,
-    price: 189000
+    // originalPrice: 210000,
+    // price: 189000
   },
   {
-    href: "https://vn.shp.ee/mn2F4kS",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/ao-giong-corset.webp",
     title: "",
     description: "Áo giống corset",
-    originalPrice: 380000,
-    price: 380000
+    // originalPrice: 380000,
+    // price: 380000
   },
   {
-    href: "https://vn.shp.ee/cYBHjRy",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/cai-dam-ten-dam.webp",
     title: "Đầm trắng hoạ tiết thêu",
     description: "Cái đầm tên đầm",
-    originalPrice: 450000,
-    price: 450000
+    // originalPrice: 450000,
+    // price: 450000
   },
   {
-    href: "https://vn.shp.ee/wutqRd2",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/set-do-xinh.webp",
     title: "Set đồ mùa hè ren thun siêu mát lưng",
     description: "Set đồ xinh",
-    originalPrice: 490000,
-    price: 490000
+    // originalPrice: 490000,
+    // price: 490000
   },
   {
-    href: "https://vn.shp.ee/xU7LFf1",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/set-do-ngu.webp",
     title: "",
     description: "Set đồ đi ngủ mặc ra đường",
-    originalPrice: 290000,
-    price: 150000
+    // originalPrice: 290000,
+    // price: 150000
   },
   {
-    href: "https://vn.shp.ee/EV8xNws",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/ao-cheo-vai.webp",
     title: "Áo sát nách lệch vai thun gân viền màu",
     description: "Áo chẹo vai",
-    originalPrice: 155000,
-    price: 139500 
+    // originalPrice: 155000,
+    // price: 139500 
   },
   {
-    href: "https://vn.shp.ee/a1aREbw",
+    href: "https://shopee.vn/cokie.typo",
     src: "https://r2.nguyentalk.com/cokie/ao-somi-bao-gao.webp",
     title: "",
     description: "Áo sơmi bao gạo",
-    originalPrice: 320000,
-    price: 166000
+    // originalPrice: 320000,
+    // price: 166000
   },
 ];
 
@@ -97,21 +97,23 @@ function calculateDiscountPercentage(originalPrice, price) {
                   {product.description}
                 </p>
               </div>
-              <div class="flex flex-col items-end">
-                {product.originalPrice !== product.price && (
-                  <p class="text-sm text-gray-500 line-through">
-                    {formatCurrency(product.originalPrice)}
+              {product.originalPrice && (
+                <div class="flex flex-col items-end">
+                  {product.originalPrice !== product.price && (
+                    <p class="text-sm text-gray-500 line-through">
+                      {formatCurrency(product.originalPrice)}
+                    </p>
+                  )}
+                  <p class="text-lg font-bold text-cokieb-500">
+                    {formatCurrency(product.price)}
                   </p>
-                )}
-                <p class="text-lg font-bold text-cokieb-500">
-                  {formatCurrency(product.price)}
-                </p>
-                {product.originalPrice !== product.price && (
-                  <span class="inline-flex items-center pt-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-negroni-100 text-negroni-800">
-                    -{calculateDiscountPercentage(product.originalPrice, product.price)}%
-                  </span>
-                )}
-              </div>
+                  {product.originalPrice !== product.price && (
+                    <span class="inline-flex items-center pt-2 px-2.5 py-0.5 rounded-full text-xs font-medium bg-negroni-100 text-negroni-800">
+                      -{calculateDiscountPercentage(product.originalPrice, product.price)}%
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </figure>
         </a>
